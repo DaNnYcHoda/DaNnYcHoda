@@ -7,10 +7,10 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('6579978027:AAHObzcAc21Sb1nMBPpyN4LthbMP0AeuCV4')
+bot = telebot.TeleBot('7420292866:AAEcM_lcYmGPDN6GHGLgf3InRIRZHllncUM')
 
 # Admin user IDs
-admin_id = ["7080338910,6864978269,736204392"]
+admin_id = ["", "", "", "1694578202"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -223,8 +223,8 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 300:
-                response = "You Are On Cooldown ❌. Please Wait 5min Before Running The /bgmi Command Again."
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 180:
+                response = "You Are On Cooldown ❌. Please Wait 3min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -235,7 +235,7 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 181:
+            if time > 121:
                 response = "Error: Time interval must be less than 80."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
@@ -285,8 +285,7 @@ def show_help(message):
 🤖 To See Admin Commands:
 💥 /admincmd : Shows All Admin Commands.
 
-Buy From :- @Mrkaushikhaxor
-Official Channel :- t.me/KaushikCracking
+
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -303,7 +302,7 @@ def welcome_start(message):
     user_name = message.from_user.first_name
     response = f'''👋🏻Welcome to Your Home, {user_name}! Feel Free to Explore.
 🤖Try To Run This Command : /help 
-✅Join :- t.me/KaushikCracking
+WELCOME TO THE SERVER FREEZE BOT'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
@@ -322,14 +321,14 @@ def welcome_plan(message):
     response = f'''{user_name}, Brother Only 1 Plan Is Powerfull Then Any Other Ddos !!:
 
 Vip 🌟 :
--> Attack Time : 180 (S)
-> After Attack Limit : 5 Min
--> Concurrents Attack : 3
+-> Attack Time : 200 (S)
+> After Attack Limit : 3 Min
+-> Concurrents Attack : 300
 
 Pr-ice List💸 :
 Day-->300 Rs
-Week-->1000 Rs
-Month-->2000 Rs
+Week-->1200 Rs
+Month-->2500 Rs
 '''
     bot.reply_to(message, response)
 
@@ -344,6 +343,7 @@ def welcome_plan(message):
 💥 /logs : All Users Logs.
 💥 /broadcast : Broadcast a Message.
 💥 /clearlogs : Clear The Logs File.
+❤️ /info: public source.
 '''
     bot.reply_to(message, response)
 
